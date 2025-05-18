@@ -75,7 +75,7 @@
     </section>
 
     <script>
-        const days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri','sat'];
+        const days = ['mon', 'tue', 'wed', 'thu', 'fri','sat','sun'];
         const sections = document.querySelectorAll('section');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
@@ -84,7 +84,7 @@
 
         function showSection(index) {
             sections.forEach((section, i) => {
-                section.classList.toggle('active', i === index-1);
+                section.classList.toggle('active', i === index);
             });
         }
 
