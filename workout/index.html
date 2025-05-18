@@ -3,23 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day Navigation</title>
+    <title>Daily Tasks</title>
     <style>
         section {
-            display: none;
+            display: none; /* Hide all sections by default */
             text-align: center;
             margin: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
         }
         section.active {
-            display: block;
+            display: block; /* Show active section */
         }
         button {
-            margin: 10px;
+            margin: 10px 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+        .navigation-buttons {
+            text-align: center;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-    <div style="text-align: center;">
+    <div class="navigation-buttons">
         <button id="prevBtn">Previous</button>
         <button id="nextBtn">Next</button>
     </div>
@@ -27,79 +35,86 @@
     <section id="mon">
         <h1>Today is Monday</h1>
         <ul>
-            <li>Task 1</li>
-            <li>Task 2</li>
+            <li>Task 1 for Monday</li>
+            <li>Task 2 for Monday</li>
         </ul>
     </section>
     <section id="tue">
         <h1>Today is Tuesday</h1>
         <ul>
-            <li>Task 1</li>
-            <li>Task 2</li>
+            <li>Task 1 for Tuesday</li>
+            <li>Task 2 for Tuesday</li>
         </ul>
     </section>
     <section id="wed">
         <h1>Today is Wednesday</h1>
         <ul>
-            <li>Task 1</li>
-            <li>Task 2</li>
+            <li>Task 1 for Wednesday</li>
+            <li>Task 2 for Wednesday</li>
         </ul>
     </section>
     <section id="thu">
         <h1>Today is Thursday</h1>
         <ul>
-            <li>Task 1</li>
-            <li>Task 2</li>
+            <li>Task 1 for Thursday</li>
+            <li>Task 2 for Thursday</li>
         </ul>
     </section>
     <section id="fri">
         <h1>Today is Friday</h1>
         <ul>
-            <li>Task 1</li>
-            <li>Task 2</li>
+            <li>Task 1 for Friday</li>
+            <li>Task 2 for Friday</li>
         </ul>
     </section>
     <section id="sat">
         <h1>Today is Saturday</h1>
         <ul>
-            <li>Task 1</li>
-            <li>Task 2</li>
+            <li>Task 1 for Saturday</li>
+            <li>Task 2 for Saturday</li>
         </ul>
     </section>
     <section id="sun">
         <h1>Today is Sunday</h1>
         <ul>
-            <li>Task 1</li>
-            <li>Task 2</li>
+            <li>Task 1 for Sunday</li>
+            <li>Task 2 for Sunday</li>
         </ul>
     </section>
 
     <script>
-        const days = ['mon', 'tue', 'wed', 'thu', 'fri','sat','sun'];
-        const sections = document.querySelectorAll('section');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
+        document.addEventListener('DOMContentLoaded', function () {
+            const dayIds = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+            const sections = document.querySelectorAll('section');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
 
-        let currentDayIndex = new Date().getDay();
+            let currentSelectedDayIndex = new Date().getDay(); // 0 for Sunday, 1 for Monday, ...
 
-        function showSection(index) {
-            sections.forEach((section, i) => {
-                section.classList.toggle('active', i === index);
+            function showDaySection(dayIndexToShow) {
+                const targetId = dayIds[dayIndexToShow];
+                sections.forEach(section => {
+                    if (section.id === targetId) {
+                        section.classList.add('active');
+                    } else {
+                        section.classList.remove('active');
+                    }
+                });
+            }
+
+            prevBtn.addEventListener('click', () => {
+                currentSelectedDayIndex = (currentSelectedDayIndex - 1 + dayIds.length) % dayIds.length;
+                showDaySection(currentSelectedDayIndex);
             });
-        }
 
-        prevBtn.addEventListener('click', () => {
-            currentDayIndex = (currentDayIndex - 1 + days.length) % days.length;
-            showSection(currentDayIndex);
+            nextBtn.addEventListener('click', () => {
+                currentSelectedDayIndex = (currentSelectedDayIndex + 1) % dayIds.length;
+                showDaySection(currentSelectedDayIndex);
+            });
+
+            // Show the current day's section on page load
+            showDaySection(currentSelectedDayIndex);
         });
-
-        nextBtn.addEventListener('click', () => {
-            currentDayIndex = (currentDayIndex + 1) % days.length;
-            showSection(currentDayIndex);
-        });
-
-        // Show the current day section on page load
-        showSection(currentDayIndex);
     </script>
 </body>
 </html>
