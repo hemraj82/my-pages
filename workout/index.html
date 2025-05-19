@@ -5,12 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Tasks</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
         section {
             display: none; /* Hide all sections by default */
             text-align: center;
             margin: 20px;
             padding: 15px;
-            border: 1px solid #ccc;
+
         }
         section.active {
             display: block; /* Show active section */
@@ -24,99 +30,197 @@
             text-align: center;
             margin-bottom: 20px;
         }
+        section ul {
+            text-align: left; /* Align text to the left for the main list */
+            list-style-position: inside; /* Ensures bullets/numbers are inside the content flow */
+            padding-left: 20px; /* Adds some initial padding to the main list */
+        }
+        section ul ul {
+            padding-left: 20px; /* Adds indentation for nested lists */
+            margin-top: 5px; /* Adds a small space above nested lists */
+        }
+        section li {
+            margin-bottom: 5px; /* Adds some space between list items */
+        }
     </style>
 </head>
 <body>
-  
 
-    <section id="mon">
-        <h1>Monday</h1>
-        <ul>
-            <li>Task 1 for Monday</li>
-            <li>Task 2 for Monday</li>
-        </ul>
-    </section>
-    <section id="tue">
-        <h1>Tuesday</h1>
-        <ul>
-            <li>Task 1 for Tuesday</li>
-            <li>Task 2 for Tuesday</li>
-        </ul>
-    </section>
-    <section id="wed">
-        <h1>Wednesday</h1>
-        <ul>
-            <li>Task 1 for Wednesday</li>
-            <li>Task 2 for Wednesday</li>
-        </ul>
-    </section>
-    <section id="thu">
-        <h1>Thursday</h1>
-        <ul>
-            <li>Task 1 for Thursday</li>
-            <li>Task 2 for Thursday</li>
-        </ul>
-    </section>
-    <section id="fri">
-        <h1>Friday</h1>
-        <ul>
-            <li>Task 1 for Friday</li>
-            <li>Task 2 for Friday</li>
-        </ul>
-    </section>
-    <section id="sat">
-        <h1>Saturday</h1>
-        <ul>
-            <li>Task 1 for Saturday</li>
-            <li>Task 2 for Saturday</li>
-        </ul>
-    </section>
-    <section id="sun">
-        <h1>Sunday</h1>
-        <ul>
-            <li>Task 1 for Sunday</li>
-            <li>Task 2 for Sunday</li>
-        </ul>
-    </section>
 
-      <div class="navigation-buttons">
-        <button id="prevBtn">Previous</button>
-        <button id="nextBtn">Next</button>
-    </div>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const dayIds = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
-            const sections = document.querySelectorAll('section');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
+<section id="mon">
+    <h3>Monday</h3>
+    <ul>
+        <li>
+            Back
+            <ul>
+                <li>Cable lat pull down</li>
+                <li>Seated cable row</li>
+                <li>Lever seated reverse fly</li>
+                <li>High row machine</li>
+                <li>Bent-over rows with barbell</li>
+                <li>One arm dumbbell row</li>
+            </ul>
+        </li>
+        <li>Biceps
+            <ul>
+                <li>Barbell curls</li>
+                <li>Hammer curls</li>
+                <li>Concentration curls</li>
+                <li>Preacher curls</li>
+                <li>Incline dumbbell curls</li>
+                <li>Chin-ups</li>
+            </ul>
+        </li>
+    </ul>
+</section>
+<section id="tue">
+    <h3>Tuesday</h3>
+    <ul>
+        <li>Shoulder
+            <ul>
+                <li>Overhead press</li>
+                <li>Lateral raises</li>
+                <li>Front raises</li>
+                <li>Arnold press</li>
+                <li>Face pulls</li>
+                <li>Upright rows</li>
+            </ul>
+        </li>
+        <li>Triceps
+            <ul>
+                <li>Tricep dips</li>
+                <li>Overhead tricep extension</li>
+                <li>Close-grip bench press</li>
+                <li>Skull crushers</li>
+                <li>Rope tricep pushdowns</li>
+                <li>Kickbacks</li>
+            </ul>
+        </li>
+    </ul>
+</section>
+<section id="wed">
+    <h3>Wednesday</h3>
+    <ul>
+        <li>Legs
+            <ul>
+                <li>Squats</li>
+                <li>Leg press</li>
+                <li>Lunges</li>
+                <li>Romanian deadlifts</li>
+                <li>Leg curls</li>
+                <li>Calf raises</li>
+            </ul>
+        </li>
+        <li>Functional
+            <ul>
+                <li>Burpees</li>
+                <li>Box jumps</li>
+                <li>Kettlebell swings</li>
+                <li>Medicine ball slams</li>
+                <li>Battle ropes</li>
+                <li>Farmer's carry</li>
+            </ul>
+        </li>
+    </ul>
+</section>
+<section id="thu">
+    <h3>Thursday</h3>
+    <ul>
+        <li>Cardio</li>
+        <li>Abs
+            <ul>
+                <li>Crunches</li>
+                <li>Plank</li>
+                <li>Leg raises</li>
+                <li>Bicycle crunches</li>
+                <li>Mountain climbers</li>
+            </ul>
+        </li>
 
-            let currentSelectedDayIndex = new Date().getDay(); // 0 for Sunday, 1 for Monday, ...
+    </ul>
+</section>
+<section id="fri">
+    <h3>Friday</h3>
+    <ul>
+        <li>Chest
+            <ul>
+                <li>Push-ups</li>
+                <li>Incline push-ups</li>
+                <li>Chest dips</li>
+                <li>Medicine ball push-ups</li>
+                <li>Clapping push-ups</li>
+                <li>Resistance band chest press</li>
+            </ul>
+        </li>
+        <li>Functional
+            <ul>
+                <li>Burpees</li>
+                <li>Box jumps</li>
+                <li>Kettlebell swings</li>
+                <li>Medicine ball slams</li>
+                <li>Battle ropes</li>
+                <li>Farmer's carry</li>
+            </ul>
+        </li>
+    </ul>
+</section>
+<section id="sat">
+    <h3>Saturday</h3>
+    <ul>
+        <li>Legs</li>
+        <li>Abs</li>
+    </ul>
+</section>
+<section id="sun">
+    <h3>Sunday</h3>
+    <ul>
+        <li></li>
+        <li></li>
+    </ul>
+</section>
 
-            function showDaySection(dayIndexToShow) {
-                const targetId = dayIds[dayIndexToShow];
-                sections.forEach(section => {
-                    if (section.id === targetId) {
-                        section.classList.add('active');
-                    } else {
-                        section.classList.remove('active');
-                    }
-                });
-            }
+<div class="navigation-buttons">
+    <button id="prevBtn">Previous</button>
+    <button id="nextBtn">Next</button>
+</div>
+<div>
+    <p>Links:<br/>
+    <a href="https://www.healthline.com/nutrition/workout-routine-for-men#advanced">https://www.healthline.com/nutrition/workout-routine-for-men#advanced</a>
+    </p>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const dayIds = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+        const sections = document.querySelectorAll('section');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
 
-            prevBtn.addEventListener('click', () => {
-                currentSelectedDayIndex = (currentSelectedDayIndex - 1 + dayIds.length) % dayIds.length;
-                showDaySection(currentSelectedDayIndex);
+        let currentSelectedDayIndex = new Date().getDay(); // 0 for Sunday, 1 for Monday, ...
+
+        function showDaySection(dayIndexToShow) {
+            const targetId = dayIds[dayIndexToShow];
+            sections.forEach(section => {
+                if (section.id === targetId) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
             });
+        }
 
-            nextBtn.addEventListener('click', () => {
-                currentSelectedDayIndex = (currentSelectedDayIndex + 1) % dayIds.length;
-                showDaySection(currentSelectedDayIndex);
-            });
-
-            // Show the current day's section on page load
+        prevBtn.addEventListener('click', () => {
+            currentSelectedDayIndex = (currentSelectedDayIndex - 1 + dayIds.length) % dayIds.length;
             showDaySection(currentSelectedDayIndex);
         });
-    </script>
+
+        nextBtn.addEventListener('click', () => {
+            currentSelectedDayIndex = (currentSelectedDayIndex + 1) % dayIds.length;
+            showDaySection(currentSelectedDayIndex);
+        });
+
+        // Show the current day's section on page load
+        showDaySection(currentSelectedDayIndex);
+    });
+</script>
 </body>
 </html>
