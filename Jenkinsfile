@@ -9,6 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh "which docker"
+                sh "ls"
                 sh "docker build -t my-node-app:${TIMESTAMP} ."
             }
         }
