@@ -1,33 +1,23 @@
 // Write Jenkins pipeline code here
 pipeline {
     agent any
+    environment {
+        TIMESTAMP = sh(script: 'date +%Y%m%d-%H%M%S', returnStdout: true).trim()
+    }
     stages {
         stage('Build') {
             steps {
-                script {
-                    def timestamp = new Date().format("yyyyMMdd-HHmmss")
-                    docker.build("my-node-app:${timestamp}")
-                }
+                sh "docker build -t my-node-app:${TIMESTAMP} ."
             }
         }
         stage('Test') {
             steps {
-                script {
-                    def timestamp = new Date().format("yyyyMMdd-HHmmss")
-                    docker.image("my-node-app:${timestamp}").inside {
-                        sh 'npm test'
-                    }
-                }
+                sh "docker run --rm my-node-app:${TIMESTAMP} npm test"
             }
         }
         stage('Deploy') {
             steps {
-                script {
-                    def timestamp = new Date().format("yyyyMMdd-HHmmss")
-                    docker.image("my-node-app:${timestamp}").inside {
-                        sh 'npm run deploy'
-                    }
-                }
+                sh "docker run --rm my-node-app:${TIMESTAMP} npm run deploy"
             }
         }
     }
